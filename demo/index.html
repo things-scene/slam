@@ -1,0 +1,156 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>SLAM Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+
+    <link rel="import" href="../../things-scene-viewer/things-scene-viewer.html">
+    <link rel="import" href="../../things-scene-viewer/things-scene-layer.html">
+    <link rel="import" href="../../things-scene-viewer/things-scene-handler.html">
+
+    <link rel="import" href="../../things-designer-elements/things-editor-color.html">
+    <link rel="import" href="../../things-designer-elements/things-editor-color-stops.html">
+    <link rel="import" href="../../things-scene-modeler/things-scene-properties.html">
+
+    <link rel="import" href="./things-scene-slam.html">
+
+    <style is="custom-style">
+
+    things-scene-viewer {
+      display: block;
+      width: 640px;
+      /*height: 480px;*/
+      height: 960px;
+    }
+    </style>
+  </head>
+  <body unresolved>
+
+    <template is="dom-bind" id="app">
+      <p>An example of <code>&lt;SLAM&gt;</code>:</p>
+
+      <things-scene-viewer id='scene'
+                           scene='{{scene}}'
+                           selected='{{selected}}'
+                           model='[[model]]'
+                           mode="1">
+        <things-scene-layer type="trace-layer"></things-scene-layer>
+        <!-- <things-scene-layer type="selection-layer"></things-scene-layer> -->
+        <!-- <things-scene-layer type="modeling-layer"></things-scene-layer> -->
+        <!-- <things-scene-handler type="text-editor"></things-scene-handler> -->
+        <!-- <things-scene-handler type="move-handler"></things-scene-handler> -->
+      </things-scene-viewer>
+
+      <things-scene-properties scene="[[scene]]"
+                               selected="[[selected]]"
+                               model="{{target}}"
+                               bounds="{{bounds}}">
+        <fieldset class="column-double">
+          <legend>Moving Object Style</legend>
+          <label>value</label>
+          <input type="number" value-as-number="{{target.value::change}}" min="0" max="100" step="1"/>
+        </fieldset>
+      </things-scene-properties>
+
+    </template>
+
+    <script>
+      window.addEventListener('WebComponentsReady', function(e) {
+        var app = document.querySelector('#app')
+        var location0 = {x: 100, y:100}
+        var rotation0 = 0
+        var location1 = {x: 500, y:500}
+        var rotation1 = 0
+
+        app.model = {
+          width: 500,
+          height: 500,
+          components: [{
+            type: 'mo',
+            id: 'mo0',
+            top: 100,
+            left: 100,
+            width:10,
+            height: 20,
+            fillStyle: '#00ff00',
+            strokeStyle: 'red',
+            lineWidth: 1,
+            lineCap: 'round',
+            mappings: [{
+              accessor: "location",
+              target: "(self)",
+              property: "location",
+              rule: "value"
+            }, {
+              accessor: "rotation",
+              target: "(self)",
+              property: "rotation",
+              rule: "value"
+            }],
+            data: {
+              location: location0,
+              rotation: rotation0
+            }
+          }, {
+            type: 'mo',
+            id: 'mo1',
+            top: 500,
+            left: 500,
+            width:10,
+            height: 20,
+            fillStyle: '#00ff00',
+            strokeStyle: 'navy',
+            lineWidth: 1,
+            lineCap: 'round',
+            mappings: [{
+              accessor: "location",
+              target: "(self)",
+              property: "location",
+              rule: "value"
+            }, {
+              accessor: "rotation",
+              target: "(self)",
+              property: "rotation",
+              rule: "value"
+            }],
+            data: {
+              location: location1,
+              rotation: rotation1
+            }
+          }]
+        }
+
+        var interval = setInterval(function() {
+          location0 = {
+            x: location0.x + Math.random() * 10,
+            y: location0.y + Math.random() * 10
+          };
+          rotation0 = rotation0 + Math.PI * 2 * Math.random()
+
+          app.$.scene.scene.variable('mo0', {
+            location: location0,
+            rotation: rotation0
+          })
+
+          location1 = {
+            x: location1.x - Math.random() * 10,
+            y: location1.y - Math.random() * 10
+          };
+          rotation1 = rotation1 + Math.PI * 2 * Math.random()
+
+          app.$.scene.scene.variable('mo1', {
+            location: location1,
+            rotation: rotation1
+          })
+        }, 1100)
+
+        setTimeout(function() {
+          clearInterval(interval)
+        }, 60000)
+      });
+    </script>
+  </body>
+</html>
