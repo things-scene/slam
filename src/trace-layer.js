@@ -46,8 +46,6 @@ export default class TraceLayer extends Layer {
 
       context.beginPath();
       this.histories[id].forEach(function(location, i) {
-        // (i == 0) && context.moveTo(this._last.x, this._last.y);
-        // context.lineTo(this._point.x, this._point.y);
         if(i == 0)
           context.moveTo(location.x, location.y);
         else

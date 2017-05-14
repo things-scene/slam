@@ -7,6 +7,26 @@ var { Component, RectPath, Shape } = scene
  */
 export default class Mo extends RectPath(Shape) {
 
+  _pre_draw(context) {
+    var center = this.center;
+
+    context.beginPath();
+    var length = this.trace.length
+    this.trace.forEach(function(location, i) {
+      if(i == 0)
+        context.moveTo(location.x, location.y);
+      else if(i < length - 1)
+        context.lineTo(location.x, location.y);
+    })
+
+    context.lineTo(center.x + this.delta('tx'), center.y + this.delta('ty'));
+
+    context.strokeStyle = this.get('strokeStyle');
+    context.stroke();
+
+    super._pre_draw(context);
+  }
+
   _draw(context) {
     var {
       top,
@@ -43,6 +63,12 @@ export default class Mo extends RectPath(Shape) {
     return false
   }
 
+  get trace() {
+    if(!this._trace)
+      this._trace = []
+    return this._trace
+  }
+
   onchange(after, before) {
     var bLeft = after.hasOwnProperty('left');
     var bTop = after.hasOwnProperty('top');
@@ -56,28 +82,45 @@ export default class Mo extends RectPath(Shape) {
       if(bTop)
         this.dy = after.top - before.top;
 
+      if(bLeft || bTop)
+        this.trace.push(this.center)
+
       if(bRotation) {
         var to = (after.rotation) % (Math.PI * 2);
-        if(to < 0)
-          to += MATH.PI * 2;
+        if(to < -Math.PI)
+          to += Math.PI * 2;
+        if(to > Math.PI)
+          to -= Math.PI * 2;
 
         var from = (before.rotation || 0) % (Math.PI * 2);
-        if(from < 0)
-          from += MATH.PI * 2;
+        if(from < -Math.PI)
+          from += Math.PI * 2;
+        if(from > Math.PI)
+          from -= Math.PI * 2;
 
         this.dtheta = to - from;
+        if(this.dtheta > Math.PI)
+          this.dtheta -= Math.PI * 2
+        else if(this.dtheta < -Math.PI)
+          this.dtheta += Math.PI * 2
+
+        this.dx && this.delta('tx', - this.dx);
+        this.dy && this.delta('ty', - this.dy);
+        this.dtheta && this.delta('theta', - this.dtheta);
+
+        this.animate({
+          step: function(delta) {
+
+            self.dx && self.delta('tx', - self.dx * (1 - delta));
+            self.dy && self.delta('ty', - self.dy * (1 - delta));
+            self.dtheta && self.delta('theta', - self.dtheta * (1 - delta));
+
+            if(self.hasOwnProperty('dtheta'))
+              self.invalidate();
+          },
+          delta: 'linear'
+        }).start()
       }
-
-      this.animate({
-        step: function(delta) {
-          self.delta('tx', - self.dx * (1 - delta));
-          self.delta('ty', - self.dy * (1 - delta));
-          self.delta('theta', - self.dtheta * (1 - delta));
-
-          self.invalidate();
-        },
-        delta: 'linear'
-      }).start()
     }
   }
 }
