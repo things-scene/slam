@@ -118,6 +118,12 @@ export default class Mo extends RectPath(Shape) {
 
           if(self.hasOwnProperty('dtheta'))
             self.invalidate();
+
+          if(delta >= 1) {
+            delete self.dx
+            delete self.dy
+            delete self.dtheta
+          }
         },
         delta: 'linear'
       }).start()
