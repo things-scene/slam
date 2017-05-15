@@ -103,24 +103,24 @@ export default class Mo extends RectPath(Shape) {
           this.dtheta -= Math.PI * 2
         else if(this.dtheta < -Math.PI)
           this.dtheta += Math.PI * 2
-
-        this.dx && this.delta('tx', - this.dx);
-        this.dy && this.delta('ty', - this.dy);
-        this.dtheta && this.delta('theta', - this.dtheta);
-
-        this.animate({
-          step: function(delta) {
-
-            self.dx && self.delta('tx', - self.dx * (1 - delta));
-            self.dy && self.delta('ty', - self.dy * (1 - delta));
-            self.dtheta && self.delta('theta', - self.dtheta * (1 - delta));
-
-            if(self.hasOwnProperty('dtheta'))
-              self.invalidate();
-          },
-          delta: 'linear'
-        }).start()
       }
+
+      this.dx && this.delta('tx', - this.dx);
+      this.dy && this.delta('ty', - this.dy);
+      this.dtheta && this.delta('theta', - this.dtheta);
+
+      this.animate({
+        step: function(delta) {
+
+          self.dx && self.delta('tx', - self.dx * (1 - delta));
+          self.dy && self.delta('ty', - self.dy * (1 - delta));
+          self.dtheta && self.delta('theta', - self.dtheta * (1 - delta));
+
+          if(self.hasOwnProperty('dtheta'))
+            self.invalidate();
+        },
+        delta: 'linear'
+      }).start()
     }
   }
 }
