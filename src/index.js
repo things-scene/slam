@@ -1,2 +1,2 @@
 export { default as Mo } from './mo'
-export { default as Ladnmark } from './landmark'
+export { default as Landmark } from './landmark'
