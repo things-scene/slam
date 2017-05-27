@@ -21,9 +21,9 @@
 
     things-scene-viewer {
       display: block;
-      width: 640px;
+      width: 1000px;
       /*height: 480px;*/
-      height: 960px;
+      height: 800px;
     }
     </style>
   </head>
@@ -60,96 +60,96 @@
     <script>
       window.addEventListener('WebComponentsReady', function(e) {
         var app = document.querySelector('#app')
-        var location0 = {x: 100, y:100}
-        var rotation0 = 0
-        var location1 = {x: 500, y:500}
-        var rotation1 = 0
 
-        app.model = {
-          width: 500,
-          height: 500,
+        var model = {
+          width: 1000,
+          height: 1000,
           components: [{
+            type: 'landmark',
+            id: 'landmark01',
+            cx: 200,
+            cy: 200,
+            rx: 50,
+            ry: 50,
+            fillStyle: '#eeeeee',
+            fontSize: 30
+          }, {
+            type: 'landmark',
+            id: 'landmark02',
+            cx: 500,
+            cy: 200,
+            rx: 50,
+            ry: 50,
+            fillStyle: '#eeeeee',
+            fontSize: 30            
+          }, {
+            type: 'landmark',
+            id: 'landmark03',
+            cx: 800,
+            cy: 200,
+            rx: 50,
+            ry: 50,
+            fillStyle: '#eeeeee',
+            fontSize: 30            
+          }, {
+            type: 'landmark',
+            id: 'landmark05',
+            cx: 200,
+            cy: 600,
+            rx: 50,
+            ry: 50,
+            fillStyle: '#eeeeee',
+            fontSize: 30            
+          }, {
+            type: 'landmark',
+            id: 'landmark06',
+            cx: 500,
+            cy: 600,
+            rx: 50,
+            ry: 50,
+            fillStyle: '#eeeeee',
+            fontSize: 30            
+          }, {
+            type: 'landmark',
+            id: 'landmark04',
+            cx: 800,
+            cy: 600,
+            rx: 50,
+            ry: 50,
+            fillStyle: '#eeeeee',
+            fontSize: 30            
+          }]
+        }
+
+        for(var i = 0;i < 100;i++) {
+          model.components.push({
             type: 'mo',
-            id: 'mo0',
-            top: 100,
-            left: 100,
+            id: 'mo-' + i,
+            top: 700 * Math.random(),
+            left: 1000 * Math.random(),
             width:10,
             height: 20,
             fillStyle: '#00ff00',
             strokeStyle: 'red',
             lineWidth: 1,
             lineCap: 'round',
-            mappings: [{
-              accessor: "location",
-              target: "(self)",
-              property: "location",
-              rule: "value"
-            }, {
-              accessor: "rotation",
-              target: "(self)",
-              property: "rotation",
-              rule: "value"
-            }],
-            data: {
-              location: location0,
-              rotation: rotation0
-            }
-          }, {
-            type: 'mo',
-            id: 'mo1',
-            top: 500,
-            left: 500,
-            width:10,
-            height: 20,
-            fillStyle: '#00ff00',
-            strokeStyle: 'navy',
-            lineWidth: 1,
-            lineCap: 'round',
-            mappings: [{
-              accessor: "location",
-              target: "(self)",
-              property: "location",
-              rule: "value"
-            }, {
-              accessor: "rotation",
-              target: "(self)",
-              property: "rotation",
-              rule: "value"
-            }],
-            data: {
-              location: location1,
-              rotation: rotation1
-            }
-          }]
+            trace: false
+          })
         }
 
-        var interval = setInterval(function() {
-          location0 = {
-            x: location0.x + Math.random() * 10,
-            y: location0.y + Math.random() * 10
-          };
-          rotation0 = rotation0 + Math.PI * 2 * Math.random()
+        app.model = model
 
-          app.$.scene.scene.variable('mo0', {
-            location: location0,
-            rotation: rotation0
+        setInterval(function() {
+          app.scene.findAll('mo').forEach((mo) => {
+            let center = mo.center
+            mo.center = {
+              x: center.x + Math.random() * 50 - 25,
+              y: center.y + Math.random() * 50 - 25
+            }
+            mo.rotation = Math.random() * Math.PI * 2
           })
+        }, 100)
 
-          location1 = {
-            x: location1.x - Math.random() * 10,
-            y: location1.y - Math.random() * 10
-          };
-          rotation1 = rotation1 + Math.PI * 2 * Math.random()
-
-          app.$.scene.scene.variable('mo1', {
-            location: location1,
-            rotation: rotation1
-          })
-        }, 1100)
-
-        setTimeout(function() {
-          clearInterval(interval)
-        }, 60000)
       });
     </script>
   </body>

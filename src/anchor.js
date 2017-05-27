@@ -1,30 +1,28 @@
 var { Component, RectPath, Shape } = scene
 
 /*
- * Moving Object
+ * Anchor
  *
- * Moving Object should have id property.
+ * Anchor should have id property.
  */
-export default class Mo extends RectPath(Shape) {
+export default class Anchor extends RectPath(Shape) {
 
   _pre_draw(context) {
-    if(this.get('trace')) {
-      var center = this.center;
+    var center = this.center;
 
-      context.beginPath();
-      var length = this.trace.length
-      this.trace.forEach(function(location, i) {
-        if(i == 0)
-          context.moveTo(location.x, location.y);
-        else if(i < length - 1)
-          context.lineTo(location.x, location.y);
-      })
+    context.beginPath();
+    var length = this.trace.length
+    this.trace.forEach(function(location, i) {
+      if(i == 0)
+        context.moveTo(location.x, location.y);
+      else if(i < length - 1)
+        context.lineTo(location.x, location.y);
+    })
 
-      context.lineTo(center.x + this.delta('tx'), center.y + this.delta('ty'));
+    context.lineTo(center.x + this.delta('tx'), center.y + this.delta('ty'));
 
-      context.strokeStyle = this.get('strokeStyle');
-      context.stroke();
-    }
+    context.strokeStyle = this.get('strokeStyle');
+    context.stroke();
 
     super._pre_draw(context);
   }
@@ -132,4 +130,4 @@ export default class Mo extends RectPath(Shape) {
   }
 }
 
-Component.register('mo', Mo);
+Component.register('anchor', Anchor);
