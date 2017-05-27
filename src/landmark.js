@@ -71,6 +71,10 @@ export default class Landmark extends Ellipse {
     return false
   }
 
+  get count() {
+    return this.molist.length
+  }
+
   get text() {
     return String(this.molist.length)
   }
@@ -114,7 +118,8 @@ export default class Landmark extends Ellipse {
     return {
       '(root)': {
         'mo': {
-          change: this.onchange_mo
+          change: this.onchange_mo,
+          removed: this.onremove_mo
         }
       }
     }
@@ -133,8 +138,10 @@ export default class Landmark extends Ellipse {
     }
 
     this._in(origin)
+  }
 
-    // mo의 랜드마크정보를 업데이트한다.
+  onremove_mo(container, component) {
+    this._out(component)
   }
 }
 

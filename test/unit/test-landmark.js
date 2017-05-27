@@ -80,4 +80,16 @@ describe('Landmark', function () {
     mo.center = {x: CENTER - 150, y: CENTER + 1}
     expect(landmark.outs[WEST]).to.equals(1)
   });
+
+  it('랜드마크안에 들어와있던 MO가 사라지게되면 랜드마크의 현재 카운트도 감소해야한다.', function () {
+    var mo = board.findById('mo')
+    var landmark = board.findById('landmark')
+
+    mo.center = {x: CENTER, y: CENTER}
+    expect(landmark.count).to.equals(1);
+
+    mo.removeSelf(true)
+    expect(landmark.count).to.equals(0);
+  });
+
 });
