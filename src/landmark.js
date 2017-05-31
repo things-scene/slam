@@ -64,6 +64,7 @@ export default class Landmark extends Ellipse {
 
   _post_draw(context) {
     super._post_draw(context)
+    this._draw_arrows(context)
     this._draw_inout(context)
   }
 
@@ -112,6 +113,62 @@ export default class Landmark extends Ellipse {
       this.molist.splice(idx, 1)
       this.outs[direction(this.center, mo.center)]++
     }
+  }
+
+  _draw_arrows(context) {
+
+    // draw arrows
+    for (var i = 0; i < 4; i++) {
+      var amplifier = this._caculateArrowSizeAmplifier(i)
+      this._draw_arrow(context, amplifier, i)
+    }
+
+  }
+
+  _draw_arrow(context, amplifier, direction) {
+
+    var angleInRad = Math.PI / 2 * direction
+
+    var center = this.center
+
+    var {
+      left,
+      top,
+      width,
+      height
+    } = this.bounds
+
+    var arrowWidth = width * 0.5
+    var arrowHeight = height * 0.25 * amplifier
+
+    context.translate(center.x, center.y)
+    context.rotate(angleInRad)
+    context.beginPath();
+    context.fillStyle = 'green'
+    context.moveTo(0, -0.5 * height - arrowHeight)
+    context.lineTo(0.5 * arrowWidth, - 0.5 * height - 0.5 * arrowHeight)
+    context.lineTo(0.25 * arrowWidth, - 0.5 * height - 0.5 * arrowHeight)
+    context.lineTo(0.25 * arrowWidth, - 0.5 * height)
+    context.lineTo(- 0.25 * arrowWidth, - 0.5 * height)
+    context.lineTo(- 0.25 * arrowWidth, - 0.5 * height - 0.5 * arrowHeight)
+    context.lineTo(- 0.5 * arrowWidth, - 0.5 * height - 0.5 * arrowHeight)
+    context.lineTo(0, -0.5 * height - arrowHeight)
+    context.moveTo(center.x, center.y)
+    context.fill()
+    context.closePath();
+    context.rotate(-angleInRad)
+    context.translate(-center.x, -center.y)
+  }
+
+  _caculateArrowSizeAmplifier(direction) {
+    var count = this.outs[direction]
+    var total = this.outs.reduce((sum, count) => {
+      return sum + count
+    }, 0)
+
+    var amplifier = 1 + count / (total || 1)
+
+    return amplifier > 1.4 ? 1.4 : amplifier
   }
 
   get eventMap() {

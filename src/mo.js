@@ -34,6 +34,7 @@ export default class Mo extends RectPath(Shape) {
       top,
       left,
       width,
+      height,
       strokeStyle
     } = this.model;
 
@@ -42,19 +43,13 @@ export default class Mo extends RectPath(Shape) {
     // 이동 및 각도 변경시에 animation 효과 필요함.
 
     context.beginPath();
-    context.moveTo(left, top);
+
+    context.moveTo(center.x , top + height / 4);
     context.lineTo(left + width, top);
-
-    context.lineWidth = 4;
-    context.strokeStyle = 'black';
-    context.stroke();
-
-    context.beginPath();
-
-    context.moveTo(center.x, center.y);
+    context.lineTo(center.x, top + height);
     context.lineTo(left, top);
-    context.lineTo(left + width, top);
-    context.lineTo(center.x, center.y);
+    context.lineTo(center.x, top + height / 4);
+
   }
 
   is3dish() {
