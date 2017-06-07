@@ -138,21 +138,30 @@ export default class Landmark extends Ellipse {
       height
     } = this.bounds
 
-    var arrowWidth = width * 0.5
-    var arrowHeight = height * 0.25 * amplifier
+    var w = width;
+    var h = height;
+
+    // RIGHT, LEFT인 경우 width와 height를 서로 바꾼다.
+    if (direction % 2 == 1) {
+      h = width;
+      w = height;
+    }
+
+    var arrowWidth = w * 0.5
+    var arrowHeight = h * 0.25 * amplifier
 
     context.translate(center.x, center.y)
     context.rotate(angleInRad)
     context.beginPath();
     context.fillStyle = 'green'
-    context.moveTo(0, -0.5 * height - arrowHeight)
-    context.lineTo(0.5 * arrowWidth, - 0.5 * height - 0.5 * arrowHeight)
-    context.lineTo(0.25 * arrowWidth, - 0.5 * height - 0.5 * arrowHeight)
-    context.lineTo(0.25 * arrowWidth, - 0.5 * height)
-    context.lineTo(- 0.25 * arrowWidth, - 0.5 * height)
-    context.lineTo(- 0.25 * arrowWidth, - 0.5 * height - 0.5 * arrowHeight)
-    context.lineTo(- 0.5 * arrowWidth, - 0.5 * height - 0.5 * arrowHeight)
-    context.lineTo(0, -0.5 * height - arrowHeight)
+    context.moveTo(0, -0.5 * h - arrowHeight)
+    context.lineTo(0.5 * arrowWidth, - 0.5 * h - 0.5 * arrowHeight)
+    context.lineTo(0.25 * arrowWidth, - 0.5 * h - 0.5 * arrowHeight)
+    context.lineTo(0.25 * arrowWidth, - 0.5 * h)
+    context.lineTo(- 0.25 * arrowWidth, - 0.5 * h)
+    context.lineTo(- 0.25 * arrowWidth, - 0.5 * h - 0.5 * arrowHeight)
+    context.lineTo(- 0.5 * arrowWidth, - 0.5 * h - 0.5 * arrowHeight)
+    context.lineTo(0, -0.5 * h - arrowHeight)
     context.moveTo(center.x, center.y)
     context.fill()
     context.closePath();
