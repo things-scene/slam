@@ -1,3 +1,6 @@
+/*
+ * Copyright © HatioLab Inc. All rights reserved.
+ */
 var { Component, Ellipse, DEFAULT } = scene
 
 const NORTH = 0

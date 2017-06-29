@@ -1,3 +1,6 @@
+/*
+ * Copyright © HatioLab Inc. All rights reserved.
+ */
 var noop = () => {}
 
 global.Canvas = require('canvas');
