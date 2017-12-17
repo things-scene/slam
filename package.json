@@ -1,8 +1,9 @@
 {
-  "name": "things-scene-slam",
+  "name": "@things-elements/things-scene-slam",
+  "flat": true,
   "version": "0.1.0",
   "description": "An element providing a starting point for your own reusable Polymer elements.",
-  "main": "index.js",
+  "main": "things-scene-slam-min.js",
   "directories": {
     "test": "test"
   },
@@ -40,5 +41,6 @@
     "node-canvas": "Automattic/node-canvas"
   },
   "dependencies": {
+    "@hatiolab/things-scene": "^2.2.36"
   }
 }
