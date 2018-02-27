@@ -1,7 +1,7 @@
 /*
  * Copyright © HatioLab Inc. All rights reserved.
  */
-var { Component, Ellipse, DEFAULT } = scene
+import { Component, Ellipse, DEFAULT } from '@hatiolab/things-scene';
 
 const NORTH = 0
 const EAST = 1

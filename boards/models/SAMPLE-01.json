@@ -1,0 +1,40 @@
+{
+  "width": 800,
+  "height": 600,
+  "type": "model-layer",
+  "translate": {
+    "x": 176.66666666666674,
+    "y": 0
+  },
+  "scale": {
+    "x": 1.5633333333333332,
+    "y": 1.5633333333333332
+  },
+  "components": [
+    {
+      "type": "mo",
+      "xx": 0,
+      "top": 177.3027718550107,
+      "left": 182.63326226012794,
+      "width": 49.776119402984875,
+      "height": 60.65031982942443,
+      "fillStyle": "#00ff00",
+      "strokeStyle": "red",
+      "lineWidth": 1,
+      "lineCap": "round",
+      "trace": true,
+      "rotation": 0
+    },
+    {
+      "type": "landmark",
+      "xx": 0,
+      "cx": 567.590618336887,
+      "cy": 147.12153518123668,
+      "rx": 50,
+      "ry": 49.99999999999997,
+      "fillStyle": "#eeeeee",
+      "fontSize": 30,
+      "rotation": 0
+    }
+  ]
+}

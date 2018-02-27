@@ -1,7 +1,7 @@
 /*
  * Copyright © HatioLab Inc. All rights reserved.
  */
-var { Component, Layer } = scene
+import { Component, Layer } from '@hatiolab/things-scene';
 
 /*
  * TraceLayer Moving Object의 동선궤적을 유지한다.
