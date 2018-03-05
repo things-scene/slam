@@ -1,49 +1,38 @@
-import locales from './locales'
+import locales from './locales';
+
+import landmark from './assets/no-image.png';
+import mo from './assets/no-image.png';
 
 var templates = [{
-  name: 'landmark',
-  /* 다국어 키 표현을 어떻게.. */
-  description: '...',
-  /* 다국어 키 표현을 어떻게.. */
-  group: 'IoT',
-  /* line|shape|textAndMedia|chartAndGauge|table|container|dataSource|IoT|3D|warehouse|form|etc */
-  icon: '../',
-  /* 또는, Object */
-  template: {
+  type: 'landmark',
+  description: 'landmark',
+  group: 'IoT', /* line|shape|textAndMedia|chartAndGauge|table|container|dataSource|IoT|3D|warehouse|form|etc */
+  icon: landmark,
+  model: {
     type: 'landmark',
-    model: {
-      type: 'landmark',
-      cx: 200,
-      cy: 200,
-      rx: 50,
-      ry: 50,
-      fillStyle: '#eeeeee',
-      fontSize: 30
-    }
+    cx: 200,
+    cy: 200,
+    rx: 50,
+    ry: 50,
+    fillStyle: '#eeeeee',
+    fontSize: 30
   }
 }, {
-  name: 'moving object',
-  /* 다국어 키 표현을 어떻게.. */
-  description: '...',
-  /* 다국어 키 표현을 어떻게.. */
-  group: 'IoT',
-  /* line|shape|textAndMedia|chartAndGauge|table|container|dataSource|IoT|3D|warehouse|form|etc */
-  icon: '../',
-  /* 또는, Object */
-  template: {
-    type: 'moving object',
-    model: {
-      type: 'mo',
-      top: 100,
-      left: 100,
-      width:10,
-      height: 10,
-      fillStyle: '#00ff00',
-      strokeStyle: 'red',
-      lineWidth: 1,
-      lineCap: 'round',
-      trace: true
-    }
+  type: 'moving object',
+  description: 'moving object',
+  group: 'IoT', /* line|shape|textAndMedia|chartAndGauge|table|container|dataSource|IoT|3D|warehouse|form|etc */
+  icon: mo,
+  model: {
+    type: 'mo',
+    top: 100,
+    left: 100,
+    width:10,
+    height: 10,
+    fillStyle: '#00ff00',
+    strokeStyle: 'red',
+    lineWidth: 1,
+    lineCap: 'round',
+    trace: true
   }
 }];
 
