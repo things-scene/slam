@@ -1,9 +1,9 @@
 {
-  "name": "@things-elements/things-scene-slam",
+  "name": "@things-scene/slam",
   "version": "0.1.2",
   "description": "Things Scene SLAM Component.",
+  "things-scene": true,
   "main": "src/index.js",
-  "things-shell": true,
   "directories": {
     "test": "test"
   },
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/ThingsElements/things-scene-slam#readme",
   "devDependencies": {
-    "@hatiolab/things-shell": "^0.2.27"
+    "@hatiolab/things-shell": "^0.3.0"
   },
   "dependencies": {
     "@hatiolab/things-scene": "^2.2.36"
