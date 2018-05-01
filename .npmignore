@@ -1,5 +1,13 @@
+DEPLOYMENT.md
+DEVELOPMENT.md
 bower_components
 node_modules
+licenses
+.editorconfig
+.gitignore
+.git
+.vscode
+.travis
+.yo-rc.json
 npm-debug.log
-things-scene-slam.js
-boards
+db.sqlite
