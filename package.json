@@ -1,6 +1,6 @@
 {
   "name": "@things-scene/slam",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Things Scene SLAM Component.",
   "things-scene": true,
   "main": "src/index.js",
@@ -8,9 +8,10 @@
     "test": "test"
   },
   "scripts": {
-    "serve": "watchify src/*.js -o things-scene-slam.js src/index.js & polyserve",
-    "test": "./node_modules/.bin/mocha --require should --compilers js:babel-core/register test/**/test-*.js",
-    "build": "browserify src/index.js -o things-scene-slam.js && uglifyjs things-scene-slam.js -o things-scene-slam-min.js"
+    "serve": "things-shell",
+    "serve:dev": "things-shell-dev",
+    "build": "webpack",
+    "prepublish": "webpack"
   },
   "repository": {
     "type": "git",
@@ -23,9 +24,9 @@
   },
   "homepage": "https://github.com/ThingsElements/things-scene-slam#readme",
   "devDependencies": {
-    "@hatiolab/things-shell": "^0.3.0"
+    "@hatiolab/things-shell": "*"
   },
   "dependencies": {
-    "@hatiolab/things-scene": "^2.2.36"
+    "@hatiolab/things-scene": "*"
   }
 }
