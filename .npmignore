@@ -2,6 +2,7 @@ DEPLOYMENT.md
 DEVELOPMENT.md
 bower_components
 node_modules
+dist-client
 licenses
 .editorconfig
 .gitignore

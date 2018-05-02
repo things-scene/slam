@@ -5,5 +5,6 @@ npm-debug.log*
 coverage
 node_modules
 bower_components
+dist-client
 *.report.html
 licenses/*.js
