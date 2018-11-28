@@ -33,7 +33,7 @@ const path = require('path');
           options: {
             presets: [
               [
-                'es2015', {
+                '@babel/env', {
                   targets: {
                     browsers: ['last 2 Chrome versions', 'Safari 10']
                   },
