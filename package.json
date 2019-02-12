@@ -1,9 +1,11 @@
 {
   "name": "@things-scene/slam",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Things Scene SLAM Component.",
   "things-scene": true,
   "main": "src/index.js",
+  "module": "dist/things-scene-slam.mjs",
+  "jsnext:main": "dist/things-scene-slam.mjs",
   "directories": {
     "test": "test"
   },
@@ -11,8 +13,8 @@
     "serve": "things-shell",
     "serve:dev": "things-shell-dev",
     "build:client": "webpack --config node_modules/@hatiolab/things-shell/webpack.config.js",
-    "build": "webpack",
-    "prepublish": "webpack"
+    "build": "rollup -c",
+    "prepublish": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,6 @@
     "@hatiolab/things-shell": "*"
   },
   "dependencies": {
-    "@hatiolab/things-scene": "*"
+    "@hatiolab/things-scene": "^2.5.0-rc"
   }
 }
