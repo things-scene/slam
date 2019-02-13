@@ -1,7 +1,7 @@
 /*
  * Copyright © HatioLab Inc. All rights reserved.
  */
-var { Component, RectPath, Shape } = scene
+import { Component, RectPath, Shape } from '@hatiolab/things-scene';
 
 /*
  * Moving Object

@@ -1,4 +1,10 @@
-bower_components
+.DS_Store
+logs
+*.log
+npm-debug.log*
+coverage
 node_modules
-npm-debug.log
-things-scene-slam.js
+bower_components
+dist-client
+*.report.html
+licenses/*.js

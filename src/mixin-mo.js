@@ -1,9 +1,9 @@
 /*
  * Copyright © HatioLab Inc. All rights reserved.
  */
-var {
+import {
   Component
-} = scene;
+} from '@hatiolab/things-scene';
 
 export default (superclass) => {
   var A = class extends MO(superclass) {
