@@ -1,66 +1,33 @@
 # things-scene-slam
 
-An element providing a starting point for your own reusable Polymer elements.
+## node package를 설치한다.
 
+`$ yarn`
 
-## Dependencies
+## 실행
 
-Element dependencies are managed via [Bower](http://bower.io/). You can
-install that via:
+`$ yarn serve`
+`$ yarn serve:dev`
 
-    npm install -g bower
+## 포트를 바꾸려면, -p 3001 식으로 추가해준다.
 
-Then, go ahead and download the element's dependencies:
+`$ yarn serve`
+`$ yarn serve -p 3001`
 
-    bower install
+## test in browser
 
+http://localhost:3000
 
-## Playing With Your Element
+## build
 
-If you wish to work on your element in isolation, we recommend that you use
-[Polyserve](https://github.com/PolymerLabs/polyserve) to keep your element's
-bower dependencies in line. You can install it via:
+`$ yarn build`
 
-    npm install -g polyserve
+| type | filename                | for            | tested |
+| ---- | ----------------------- | -------------- | ------ |
+| UMD  | things-scene-slam.js    | modern browser | 0      |
+| UMD  | things-scene-slam-ie.js | ie 11          | 0      |
+| ESM  | things-scene-slam.mjs   | modern browser | 0      |
 
-And you can run it via:
+## publish
 
-    polyserve
-
-Once running, you can preview your element at
-`http://localhost:8080/components/things-scene-slam/`, where `things-scene-slam` is the name of the directory containing it.
-
-
-## Testing Your Element
-
-Simply navigate to the `/test` directory of your element to run its tests. If
-you are using Polyserve: `http://localhost:8080/components/things-scene-slam/test/`
-
-### web-component-tester
-
-The tests are compatible with [web-component-tester](https://github.com/Polymer/web-component-tester).
-Install it via:
-
-    npm install -g web-component-tester
-
-Then, you can run your tests on _all_ of your local browsers via:
-
-    wct
-
-#### WCT Tips
-
-`wct -l chrome` will only run tests in chrome.
-
-`wct -p` will keep the browsers alive after test runs (refresh to re-run).
-
-`wct test/some-file.html` will test only the files you specify.
-
-
-## Yeoman support
-
-If you'd like to use Yeoman to scaffold your element that's possible. The official [`generator-polymer`](https://github.com/yeoman/generator-polymer) generator has a [`seed`](https://github.com/yeoman/generator-polymer#seed) subgenerator.
-
-
-## License
-
-Copyright [Hatiolab](http://things-scene.hatiolab.com/EULA/)
+`$ yarn publish`
