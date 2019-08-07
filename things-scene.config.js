@@ -1,5 +1,3 @@
-import locales from './locales';
-
 import landmark from './assets/no-image.png';
 import mo from './assets/no-image.png';
 
@@ -37,6 +35,5 @@ var templates = [{
 }];
 
 export default {
-  templates,
-  locales
+  templates
 };
