@@ -10,11 +10,13 @@
     "test": "test"
   },
   "scripts": {
-    "serve": "things-shell",
-    "serve:dev": "things-shell-dev",
-    "build:client": "webpack --config node_modules/@hatiolab/things-shell/webpack.config.js",
-    "build": "webpack && rollup -c",
-    "prepublish": "webpack && rollup -c"
+    "serve": "things-factory",
+    "serve:dev": "things-factory-dev",
+    "build": "webpack",
+    "prepublish": "webpack",
+    "build:client": "yarn run clean:client && webpack --config node_modules/@things-factory/shell/webpack.config.js",
+    "clean:client": "rm -rf dist-client",
+    "migration": "things-factory-migration"
   },
   "repository": {
     "type": "git",
@@ -27,7 +29,8 @@
   },
   "homepage": "https://github.com/ThingsElements/things-scene-slam#readme",
   "devDependencies": {
-    "@hatiolab/things-shell": "*"
+    "@things-factory/board-app": "*",
+    "@things-factory/board-test": "*"
   },
   "dependencies": {
     "@hatiolab/things-scene": "*"
