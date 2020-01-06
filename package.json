@@ -1,6 +1,6 @@
 {
   "name": "@things-scene/slam",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Things Scene SLAM Component.",
   "things-scene": true,
   "main": "src/index.js",
@@ -29,8 +29,8 @@
   },
   "homepage": "https://github.com/ThingsElements/things-scene-slam#readme",
   "devDependencies": {
-    "@things-factory/board-app": "*",
-    "@things-factory/board-test": "*"
+    "@things-factory/board-app": "^2.0.0",
+    "@things-factory/board-test": "^2.0.0"
   },
   "dependencies": {
     "@hatiolab/things-scene": "*"
